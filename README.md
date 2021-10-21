@@ -23,6 +23,7 @@ Com este guia você aprenderá **tudo** o que é necessário sobre o Dart, para 
   - [**```for```**](#for)
   - [**Funções**](#funções)
   - [**Classes**](#classes)
+  - [**Herança**](#heranca)
   - [**Coleções**](#coleções)
   - [**```try / catch / finally```**](#try--catch--finally)
   - [**`Future`**](#future-e-streams)
@@ -373,6 +374,33 @@ var corollaCross = Carro.novo();
 
 // modelS possui marca='Tesla', ano=2020, motor=2.0
 var modelS = Carro.tesla(2020, 2.0);
+```
+## **Herança**
+
+É um padrão da orientação à objetos que permite a criação de **subclasses**.
+
+No Dart, utilizamos a palavra-chave `extends` para indicar que uma classe é *filha* de outra.
+
+```dart
+class Bootcamp {
+  void basico() {
+    aprenderOrientacaoObjetos();
+  }
+}
+
+class FlutterBootcamp extends Bootcamp {
+  void basico() {
+    super.basico();
+    aprenderDart();
+  }
+}
+
+class ReactBootcamp extends Bootcamp {
+  void basico() {
+    super.basico();
+    aprenderJavascript();
+  }
+}
 ```
 
 ## **Coleções**
