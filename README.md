@@ -23,7 +23,7 @@ Com este guia você aprenderá **tudo** o que é necessário sobre o Dart, para 
   - [**```for```**](#for)
   - [**Funções**](#funções)
   - [**Classes**](#classes)
-  - [**Herança**](#heranca)
+  - [**Herança**](#herança)
   - [**Coleções**](#coleções)
   - [**```try / catch / finally```**](#try--catch--finally)
   - [**`Future`**](#future-e-streams)
