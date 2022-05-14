@@ -251,9 +251,9 @@ if (condicao) {
 ## **```switch```**
 ```dart
 switch (variavel) {
-  case: valor1; 
+  case valor1: 
 	break;
-  case: valor2;
+  case valor2:
 	break;
   default; // opcional, acionado caso variavel não seja valor1 ou valor2		
 }
