@@ -284,7 +284,7 @@ for (var i = 0; i < 5; i++) {
 ```
 
 ```dart
-for (item in minhaLista) {
+for (var item in minhaLista) {
 
 }
 ```
