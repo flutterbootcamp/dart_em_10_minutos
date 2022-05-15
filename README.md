@@ -383,24 +383,45 @@ No Dart, utilizamos a palavra-chave `extends` para indicar que uma classe é *fi
 
 ```dart
 class Bootcamp {
+  String? linguagem;
+  Bootcamp(this.linguagem);
   void basico() {
-    aprenderOrientacaoObjetos();
+    print('Conceitos Básicos OO');
+    conteudo();
+  }
+
+  void conteudo() {
+    print('Objetos, Herança, Encapsulamento');
   }
 }
 
 class FlutterBootcamp extends Bootcamp {
-  void basico() {
+  FlutterBootcamp(super.linguagem);
+  aprenderDart() {
     super.basico();
-    aprenderDart();
+    super.linguagem = 'Dart';
+  }
+
+  @override
+  void conteudo() {
+    print('Tipos de dados e construtores');
   }
 }
 
 class ReactBootcamp extends Bootcamp {
-  void basico() {
+  bool isNative = true;
+  ReactBootcamp(super.linguagem, this.isNative);
+  aprenderJavascript() {
     super.basico();
-    aprenderJavascript();
+    super.linguagem = 'Javascript';
+  }
+
+  void conteudoReact(String extra) {
+    super.conteudo();
+    print(extra);
   }
 }
+
 ```
 
 ## **Coleções**
