@@ -26,7 +26,7 @@ Com este guia você aprenderá **tudo** o que é necessário sobre o Dart, para 
   - [**Herança**](#herança)
   - [**Coleções**](#coleções)
   - [**```try / catch / finally```**](#try--catch--finally)
-  - [**`Future`**](#future-e-streams)
+  - [**`Future`**](#future)
   - [**`async / await`**](#async--await)
   - [**E agora?**](#e-agora)
   - [**Referências**](#referências)
