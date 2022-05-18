@@ -477,11 +477,16 @@ Alguns exemplos:
 Future é um objeto que representa uma operação assíncrona. Assim que a operação for concluída, o valor está pronto para ser usado.
 
 ```dart
-void consultarTotalCommits() {
-  // quando buscarApi() concluir seu processamento, a função then() será executada e a variável total terá o valor foi retornado da API.
-  Future<int> totalCommits = buscarApi();
-  totalCommits.then((total) => tratarRetorno(total));
+Future<int?> buscarApi() async {
+  return Future.delayed(Duration(seconds: 2), () => 2);
 }
+
+void consultarTotalCommits() {
+  Future<int?> totalCommits = buscarApi();
+  totalCommits.then((total) => print(total));
+}
+
+void main() => consultarTotalCommits();
 ```
 
 O compilador **não** irá esperar o retorno da API continuar o processamento.
