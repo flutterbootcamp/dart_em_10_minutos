@@ -35,23 +35,33 @@ Com este guia você aprenderá **tudo** o que é necessário sobre o Dart, para 
 
 ## **Por que o Flutter usa Dart ?**
 
-Dart possibilita que seu código seja executado em 2 tipos diferentes:
+Dart é uma linguagem de programação versátil que oferece 2 modos de execução distintos:
 
-> #### **Interpretado** (JIT = **j**ust-**i**n-**t**ime): O código é interpretado e executado (neste caso, pela Dart *virtual machine*), mesmo que já esteja em execução. Assim como acontece no Python ou Javascript.
+> #### **Interpretado** (JIT = **j**ust-**i**n-**t**ime): O código é interpretado e executado em tempo real pela Dart VM (*virtual machine*), semelhante a linguagens como Python ou Javascript. Essa abordagem é particularmente benéfica durante o desenvolvimento, possibilitando o hot-reload. Isso significa que as alterações no código são injetadas em um aplicativo em execução sem a necessidade de reinicialização. Este modo é utilizado para o desenvolvimento dos aplicativos.
 
 ---
  
-> #### **Compilado** (AOT = **a**head **o**f **t**ime): O código é compilado e executado pela Dart VM. Assim como acontece no Java. 
+> #### **Compilado** (AOT = **a**head **o**f **t**ime): O código é pré-compilado em código de máquina nativo, semelhante a linguagens como Java ou Swift.Esta abordagem aumenta significativamente a velocidade de inicialização e o desempenho geral. Este modo é utilizado para a publicação dos aplicativos.  
 
 ### **E qual a vantagem?** 
+
+Ao oferecer os modos JIT e AOT, o Dart fornece um equilíbrio único entre produtividade do desenvolvedor e desempenho do aplicativo.
 
 *Para desenvolvedores:* Uma experiência incrível, pois o código é interpretado e as alterações são refletidas em menos de 2 segundos.
 
 *Para os usuários:* Um aplicativo altamente performático, já que o código foi compilado para a plataforma nativa na qual está sendo executado.
 
-Resumindo, este é o motivo!
+Esta versatilidade é uma razão chave pela qual o Flutter utiliza o Dart.
 
-Mas caso queira se aprofundar, recomendo os materiais abaixo:
+|                 | Interpretado (JIT)                            | Compilado (AOT)                             |
+|-----------------|-----------------------------------------------|---------------------------------------------|
+| **Código**      | Interpretado e executado em tempo real        | Pré-compilado em código de nativo           |
+| **Semelhança**  | Python, JavaScript                            | Java, Swift                                 |
+| **Uso**         | Desenvolvimento                               | Produção                                    |
+| **Vantagem**    | Hot-reload                                    | Performance                                 |
+| **Execução**    | Lenta                                         | Rápida                                      |
+
+Caso queira se aprofundar, recomendo os materiais abaixo:
 
 [Primeiro artigo sobre este assunto](https://hackernoon.com/why-flutter-uses-dart-dd635a054ebf)
 
