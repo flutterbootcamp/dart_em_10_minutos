@@ -119,7 +119,7 @@ Neste caso, `bootcamp` armazena a referência para um objeto do tipo `String` co
 E esta sintaxe se aplica para todos os outros tipos de dados:
 
 ```dart
-int lancamento = 2021;
+int lancamento = 2024;
 double versao = 2.0;
 List<String> aplicativos = ['Tempus', 'Menuo', 'Libria', 'Civitas'];
 Map<String, Object> informacoes = {
@@ -148,7 +148,7 @@ E o mesmo se aplica para todos os outros tipos de dados.
 
 ```dart
 // int
-var lancamento = 2021;
+var lancamento = 2024;
 
 // double
 var versao = 1.0;
@@ -220,9 +220,9 @@ Porém, precisamos destacar 3 que são amplamento utilizados:
 	```
  - `??` - Retorna o valor da 1a expressão **não** seja `null`. Se for `null`, retorna a 2a expressão:
  	```dart 
-	// anoAtual possui valor de 2021, pois ano é null
+	// anoAtual possui valor de 2024, pois ano é null
 	int? ano;
-	var anoAtual = ano ?? 2021;
+	var anoAtual = ano ?? 2024;
 	```
 
  - `:` - Se a condição for `true`, retorna o valor da 1a expressão. Caso **não** seja `null`, retorna a 2a expressão:
@@ -271,14 +271,14 @@ switch (variavel) {
 ## **```while```**
 
 ```dart
-var ano = 2021;
+var ano = 2024;
 while (ano < 2050) {
   ano++;
 }
 ```
 
 ```dart
-var ano = 2021;
+var ano = 2024;
 do {
   ano++;
 } while (ano < 2050);
@@ -366,7 +366,7 @@ class Carro{
   }
 
   Carro.novo():
-    ano = 2021;
+    ano = 2024;
 
   Carro.tesla(this.ano, this.motor):
     marca = 'Tesla';
@@ -379,7 +379,7 @@ Agora, pode-se criar uma  instância do objeto `Carro` da seguinte forma:
 // gol possui motor=1.0
 var gol = Carro.popular();
 
-// corollaCross possui ano=2021
+// corollaCross possui ano=2024
 var corollaCross = Carro.novo();
 
 // modelS possui marca='Tesla', ano=2020, motor=2.0
