@@ -9,7 +9,7 @@ Com este guia você aprenderá **tudo** o que é necessário sobre o Dart, para 
 
 ## **Sumário**
   - [**Por que o Flutter usa Dart?**](#por-que-o-flutter-usa-dart)
-  - [**Conceitos importantes**](#conceitos-importantes)
+  - [**Conceitos fundamentais**](#conceitos-fundamentais)
   - [**`main()`**](#main)
   - [**Tipos de dados**](#tipos-de-dados)
   - [**Variáveis**](#variáveis)
@@ -35,13 +35,25 @@ Com este guia você aprenderá **tudo** o que é necessário sobre o Dart, para 
 
 ## **Por que o Flutter usa Dart ?**
 
-Dart é uma linguagem de programação versátil que oferece 2 modos de execução distintos:
+Dart oferece 2 modos de execução distintos:
+
+1. **Interpretado (JIT - Just-In-Time):**
+   - Utilizado durante o desenvolvimento
+   - Permite hot-reload para atualizações rápidas
+   - Código interpretado em tempo real pela Dart VM
+
+2. **Compilado (AOT - Ahead-Of-Time):**
+   - Utilizado para a publicação dos aplicativos
+   - Código pré-compilado para código de máquina nativo
+   - Oferece inicialização rápida e alto desempenho
+
+Assim, proporciona equilíbrio entre produtividade (do desenvolvedor) e desempenho (do aplicativo): 
 
 > #### **Interpretado** (JIT = **j**ust-**i**n-**t**ime): O código é interpretado e executado em tempo real pela Dart VM (*virtual machine*), semelhante a linguagens como Python ou Javascript. Essa abordagem é particularmente benéfica durante o desenvolvimento, possibilitando o hot-reload. Isso significa que as alterações no código são injetadas em um aplicativo em execução sem a necessidade de reinicialização. Este modo é utilizado para o desenvolvimento dos aplicativos.
 
 ---
  
-> #### **Compilado** (AOT = **a**head **o**f **t**ime): O código é pré-compilado em código de máquina nativo, semelhante a linguagens como Java ou Swift.Esta abordagem aumenta significativamente a velocidade de inicialização e o desempenho geral. Este modo é utilizado para a publicação dos aplicativos.  
+> #### **Compilado** (AOT = **a**head **o**f **t**ime): O código é pré-compilado em código de máquina nativo, semelhante a linguagens como Java ou Swift. Esta abordagem aumenta significativamente a velocidade de inicialização e o desempenho geral. Este modo é utilizado para a publicação dos aplicativos.
 
 ### **E qual a vantagem?** 
 
@@ -71,13 +83,13 @@ Caso queira se aprofundar, recomendo os materiais abaixo:
 
 ---
 
-## **Conceitos importantes**
+## **Conceitos fundamentais**
 
 - É uma linguagem **tipada**, porém a declaração de tipos é opcional.
-- Tudo em Dart é uma instância de `Object`. Qualquer coisa que possa ser armazenada em uma variável. Com exceção de `null`.
-- Variáveis não podem ser declaradas com valores `null`. Para que elas aceitem, precisa-se declarar **explicitamente** esta possibilidade. 
+- Tudo em Dart é um objeto (instância de `Object`), exceto `null`.
+- Null safety: variáveis não aceitam `null` por padrão (é necessário declarar **explicitamente** esta possibilidade). 
 
----
+--- 
 
 ## **`main()`**
 Todo programa Dart (e aplicativos em Flutter, são programas Dart), iniciam na função `main()`:
@@ -97,8 +109,6 @@ Básicos:
 - Coleções: `List`,`Sets` e `Maps`
 - `null`
 
-Existem ainda os tipos `Symbols` e `Runes` mas provavelmente não utilizará nenhum deles.
-
 Especiais:
 - `Object`: A **super classe** do Dart. Todos os objetos são herdados dela, com exceção do tipo `Null`.
 - `Future` e `Stream`: Utilizadas para operações assíncronas.
@@ -112,9 +122,8 @@ Variáveis armezenam referências. E em Dart, podemos declarar variáveis inform
 
 ```dart
 String bootcamp = 'Flutter Bootcamp';
+// bootcamp é uma variável do tipo String
 ```
-
-Neste caso, `bootcamp` armazena a referência para um objeto do tipo `String` com o valor de "Flutter Bootcamp".
 
 E esta sintaxe se aplica para todos os outros tipos de dados:
 
@@ -168,19 +177,19 @@ var informacoes = {
 
 Estes são os modificadores possíveis ao declarar variáveis:
 
-**var:** Permite que o valor atribuído seja alterado.
+- **var:** Permite que o valor seja alterado.
 
-**final:** O valor não pode ser alterado e **não** é conhecido em tempo de execução.
+- **final:** O valor não pode ser alterado e **não** é conhecido em tempo de execução.
 
-**const:** O valor não pode ser alterado e ja é conhecido em tempo de execução.
+- **const:** O valor não pode ser alterado e ja é conhecido em tempo de execução.
 
 > Sempre que possível, utilize `const`.
 
 ## **Null Safety**
 
-Desde a versão [2.12](https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87) (liberada em março de 2021), Dart suporta o modo `null safety` por padrão.
+Por padrão, o Dart não aceita variáveis com valor `null`. Sendo mandatório iniciar a variável com um valor.
 
-Isso significa que devemos declarar explicitamente que uma variável pode ter valor `null`. Caso contrário, o compilador indicará um erro:.
+Para que uma variável aceite valor `null`, devemos declarar explicitamente, caso contrário, o compilador indicará um erro:
 
 ```dart
 int idade;
@@ -202,51 +211,32 @@ print(idade);
 
 ## **Operadores**
 
-Dart é uma linguagem moderna e possui todos os tipos de operadores tradicionais:
+Dart possui todos os tipos de operadores tradicionais: `==`, `!=`, `&&`, `||`, `>`, `>=`, `+=`, `!`,  e muitos outros.
 
-`==`, `!=`, `&&`, `||`, `>`, `>=`, `+=`, `!`,  e muitos outros.
+Porém, precisamos destacar 3 que são amplamente utilizados:
 
-Porém, precisamos destacar 3 que são amplamento utilizados:
-
- - `?` - Indica que uma variável pode ter valor `null`:
+ - `?` - Indica que uma variável pode ter valor `null`.
+ - `??` - Retorna o valor da 1a expressão **não** seja `null`. Se for `null`, retorna a 2a expressão.
+  - `:` - Se a condição for `true`, retorna o valor da 1a expressão. Caso **não** seja `null`, retorna a 2a expressão.
 
 	```dart 
-	// O valor null não pode ser atribuído à variavel ano
-	int ano = null; 
+	// O valor null não pode ser atribuído à variavel mes
+	int mes = null; 
 
-	// Em ambas declarações, o valor de ano é null.
-	int? ano = null;
-	int? ano;
-	```
- - `??` - Retorna o valor da 1a expressão **não** seja `null`. Se for `null`, retorna a 2a expressão:
- 	```dart 
+	// Em ambas declarações, o valor de mes é null.
+	int? mes = null;
+	int? mes;
+	
 	// anoAtual possui valor de 2024, pois ano é null
 	int? ano;
 	var anoAtual = ano ?? 2024;
-	```
-
- - `:` - Se a condição for `true`, retorna o valor da 1a expressão. Caso **não** seja `null`, retorna a 2a expressão:
- 	```dart 
+	
 	// maiorIdade possui valor true, pois (idade é maior que 18) 
 	var idade = 34;
 	var maiorIdade = idade > 18 ? true : false;
 	```
 
 ## **```if```**
-
-```dart
-if (condicao) {
-
-}
-```
-
-```dart
-if (condicao) {
-
-} else {
-
-}
-```
 
 ```dart
 if (condicao) {
@@ -268,22 +258,22 @@ switch (variavel) {
   default; // opcional, acionado caso variavel não seja valor1 ou valor2		
 }
 ```
+
 ## **```while```**
 
-```dart
-var ano = 2024;
-while (ano < 2050) {
-  ano++;
-}
-```
 
 ```dart
+
+var mes = 1;
+while (mes < 13) {
+  mes++;
+}
+
 var ano = 2024;
 do {
   ano++;
 } while (ano < 2050);
 ```
-
 
 ## **```for```**
 
@@ -291,9 +281,7 @@ do {
 for (var i = 0; i < 5; i++) {
 
 }
-```
 
-```dart
 for (var item in minhaLista) {
 
 }
@@ -302,22 +290,18 @@ for (var item in minhaLista) {
 
 ## **Funções**
 
-São instruções de código que executadas em sequência.
+São instruções de código executadas em sequência.
 
-Em Dart funções são objetos e do tipo `Function`, ou seja, podem ser atribuídas às variáveis ou passadas como parâmetros.
+No Dart, são objetos do tipo `Function`, ou seja, podem ser atribuídas a variáveis ou passadas como parâmetros.
 
 ```dart
 bool isMaiorDeIdade(int idade) {
   return idade >= 18;
 }
-```
 
-Funções que executam apenas 1 instruçãos, podem ser declaradas usando a sintáxe `=>` :
-
-```dart
+// se a função possui apenas 1 instrução, pode ser declarada com =>
 bool isMaiorIdade(int idade) => idade > 18;
 ```
-
 
 ## **Classes**
 
@@ -331,29 +315,21 @@ class FlutterBootcamp {
   String? descricao;
   List<String>? tags;
 
-  // construtor default(opcional)
+  // construtor default(opcional, não é necessário declarar)
   FlutterBootcamp();
-  FlutterBootcamp(int aplicativos, String descricao, List<String> tags ){
-    this.aplicativos = aplicativos;
-    this.descricao = descricao;
-    this.tags = tags;
-  };
+
+  // construtor com parâmetros
   FlutterBootcamp(this.aplicativos, this.descricao, this.tags);
-  /*
-    Todas as declarações acima são válidas como construtor default da classe. 
-    Porém, só é possível utilizar 1 delas.
-    Lembre-se: declarar o construtor default é opcional 
-  */
 
   // funções
   void exibirConteudo(){
-
+    print('Construa $aplicativos aplicativos com Flutter!');
   }
 
 }
 ```
 
-No Flutter, outra funcionalidade muito utilizada da linguagem Dart são os `named constructors`:
+Há também os `named constructors`, que permitem criar a instância do objeto com valores específicos.
 
 ```dart
 class Carro{
@@ -371,11 +347,7 @@ class Carro{
   Carro.tesla(this.ano, this.motor):
     marca = 'Tesla';
 }
-```
 
-Agora, pode-se criar uma  instância do objeto `Carro` da seguinte forma:
-
-```dart
 // gol possui motor=1.0
 var gol = Carro.popular();
 
@@ -417,68 +389,41 @@ class FlutterBootcamp extends Bootcamp {
     print('Tipos de dados e construtores');
   }
 }
-
-class ReactBootcamp extends Bootcamp {
-  bool isNative = true;
-  ReactBootcamp(super.linguagem, this.isNative);
-  aprenderJavascript() {
-    super.basico();
-    super.linguagem = 'Javascript';
-  }
-
-  void conteudoReact(String extra) {
-    super.conteudo();
-    print(extra);
-  }
-}
-
 ```
 
 ## **Coleções**
 
 ```dart
-// List (os itens podem ser duplicados)
+// list
 var aplicativos = ['libria', 'menuo', 'civitas'];
 
-// Por inferência, aplicativos é um List<String>
-```
-
-```dart
-// Set (os itens são únicos)
+// set
 var aplicativos = {'libria', 'menuo', 'civitas'};
 
-// Por inferência, aplicativos é um Set<String>
-```
-
-```dart
-// Map 
+// map
 var aplicativos = {
   1 : 'libria', 
   2 : 'menuo', 
   3 : 'civitas'
  };
-
- // Por inferência, aplicativos é um Map<int, String>
 ```
 ## **```try / catch / finally```**
 
 ```dart
 try {
-  
+  // código que pode gerar erro
 } catch (e) {
-
+  // executado caso ocorra erro
 } finally { // opcional
-  
+  // executado independente de ter ocorrido erro ou não
 }
 ```
 
 ## **Future**
 
-São objetos utilizados para tratar operações assíncronas (sem sincronia).
+São objetos utilizados para tratar operações assíncronas (sem sincronia), como:
 
-Alguns exemplos:
-
-- Consumir uma API via rede; 
+- Consumir uma API; 
 - Operações em banco de dados;
 - Ler / gravar em um arquivo.
 
@@ -488,6 +433,7 @@ Future é um objeto que representa uma operação assíncrona. Assim que a opera
 
 ```dart
 Future<int?> buscarApi() async {
+  // Future.delayed: simula uma operação assíncrona
   return Future.delayed(Duration(seconds: 2), () => 2);
 }
 
@@ -524,21 +470,10 @@ O compilador **irá** esperar o retorno da API para continuar o processamento.
 
 Tudo sobre linguagem Dart necessário para começar com Flutter já foi apresentado. 
 
-Porém, ainda existem muitos recursos para serem explorados.
+A documentação oficial do Dart é uma ótima fonte de conhecimento:
 
-Para continuar os estudos e se aprofundar, acesse o guia:
-
-[A tour of the Dart language](https://dart.dev/guides/language/language-tour)
-
-E também os cursos do [Google Codelabs](https://dart.dev/codelabs).
-
-Com [DartPad](https://dartpad.dev/?null_safety=true), é possível experimentar a linguagem diretamente no browser.
+- [Introduction to Dart](https://dart.dev/samples)
+- [Effective Dart](https://dart.dev/guides/language/effective-dart)
+- [Dart Tutorials](https://dart.dev/tutorials)
 
 #### Bons estudos 📖
-
-
-## **Referências**
-
-[A tour of the Dart language](https://dart.dev/guides/language/language-tour)
-
-[Language samples](https://dart.dev/samples)
